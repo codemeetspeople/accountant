@@ -5,6 +5,20 @@ from django.utils.translation import ugettext as _
 from core.constants import Role
 
 
+class BaseModel(models.Model):
+    class Meta:
+        abstract = True
+
+    created_at = models.DateTimeField(
+        verbose_name=_('Время создания'),
+        auto_now_add=True
+    )
+    updated_at = models.DateTimeField(
+        verbose_name=_('Время обновления'),
+        auto_now=True
+    )
+
+
 class User(AbstractUser):
     class Meta:
         verbose_name = _('Пользователь')
